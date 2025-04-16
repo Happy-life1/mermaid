@@ -1,0 +1,32 @@
+@startuml
+left to right direction
+actor Client
+actor StaffMember
+
+rectangle CSC_MA_System {
+    Client -- (Register)
+    Client -- (Login)
+    Client -- (View Products)
+    Client -- (Checkout)
+    Client -- (View Order History)
+    Client -- (Share Referral QR Code)
+
+    StaffMember -- (Manage Orders)
+
+    (Register) .> (Enter Personal Details) : <<include>>
+    (Register) .> (Receive OTP) : <<include>>
+    (Register) .> (Validate OTP) : <<include>>
+
+    (Login) .> (Enter Credentials) : <<include>>
+
+    (View Products) .> (Select Category) : <<include>>
+    (View Products) .> (View Product Details) : <<include>>
+
+    (Checkout) .> (Enter Shipping Address) : <<include>>
+    (Checkout) .> (Use Gift Points) : <<extend>>
+    (Checkout) .> (Enter Payment Details) : <<include>>
+    (Checkout) .> (Receive Order Confirmation) : <<include>>
+
+    (Manage Orders) .> (Update Order Status) : <<include>>
+}
+@enduml
